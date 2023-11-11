@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_ext_product_variants",
+  "info": {
+    "displayName": "ProductVariant",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "pictogram": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ext.pictogram"
+    },
+    "quantity": {
+      "required": true,
+      "min": 0,
+      "type": "integer"
+    },
+    "price": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ext.money"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@strapi/plugin-graphql": "^4.0.0",
+    "@strapi/plugin-i18n": "4.15.0",
+    "@strapi/plugin-seo": "^1.9.6",
+    "@strapi/plugin-users-permissions": "4.15.0",
+    "@strapi/strapi": "4.15.0",
+    "better-sqlite3": "8.6.0",
+    "lodash.set": "^4.3.2",
+    "mime-types": "^2.1.27",
+    "strapi-plugin-ckeditor5": "^2.1.1-rc.1"
+  },
+  "name": "lapshin-ecommerce",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "8d542bb7-09f0-4cf0-b216-974b13441f45",
+    "template": "ecommerce"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

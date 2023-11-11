@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ext_monies",
+  "info": {
+    "displayName": "Money",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "currency": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
