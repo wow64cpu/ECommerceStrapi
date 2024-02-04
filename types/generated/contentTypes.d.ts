@@ -744,6 +744,77 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCollectionCollection extends Schema.CollectionType {
+  collectionName: 'collections';
+  info: {
+    singularName: 'collection';
+    pluralName: 'collections';
+    displayName: 'Collection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    products: Attribute.Relation<
+      'api::collection.collection',
+      'oneToMany',
+      'api::product.product'
+    >;
+    handle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    rank: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::collection.collection',
+      'oneToMany',
+      'api::collection.collection'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiMenuMenu extends Schema.CollectionType {
   collectionName: 'menus';
   info: {
@@ -926,6 +997,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    collection: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::collection.collection'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -967,6 +1043,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
+      'api::collection.collection': ApiCollectionCollection;
       'api::menu.menu': ApiMenuMenu;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
